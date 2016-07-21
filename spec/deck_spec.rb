@@ -4,7 +4,10 @@ describe Deck do
   subject(:deck) { Deck.new }
   describe '#initialize' do
     it 'contains card objects' do
-      expect(deck.stack[0]).to be_an_instance_of(Card)
+      card_check = deck.stack.all? do |card|
+        card.class == Card
+      end
+      expect(card_check).to be true
     end
     it 'creates a 52 card stack' do
       expect(deck.stack.length).to eq(52)
